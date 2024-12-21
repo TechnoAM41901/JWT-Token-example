@@ -1,0 +1,147 @@
+Step-by-Step Guide to Perform Authentication using Postman
+Start Your Express Server: Ensure your server is running by executing:
+
+bash
+node app.js
+Register a User:
+
+URL: http://localhost:3000/api/auth/register
+
+Method: POST
+
+Headers:
+
+Content-Type: application/json
+
+Body: (Select raw and JSON format)
+
+json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "password123"
+}
+Send the Request: You should receive a response with a token like this:
+
+json
+{
+  "token": "your_jwt_token_here"
+}
+Log In:
+
+URL: http://localhost:3000/api/auth/login
+
+Method: POST
+
+Headers:
+
+Content-Type: application/json
+
+Body: (Select raw and JSON format)
+
+json
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
+Send the Request: You should receive a response with a token like this:
+
+json
+{
+  "token": "your_jwt_token_here"
+}
+Access Protected Route:
+
+URL: http://localhost:3000/api/auth/protected
+
+Method: GET
+
+Headers:
+
+Content-Type: application/json
+
+x-auth-token: your_jwt_token_here (Replace your_jwt_token_here with the actual token you received from the login response)
+
+Send the Request: If the token is valid, you should receive a response like this:
+
+json
+{
+  "msg": "This is a protected route"
+}
+Detailed Steps:
+Register a User in Postman:
+
+Open Postman.
+
+Set the method to POST.
+
+Enter the URL: http://localhost:3000/api/auth/register.
+
+Go to the Headers tab and add:
+
+Key: Content-Type
+
+Value: application/json
+
+Go to the Body tab, select raw and choose JSON from the dropdown.
+
+Enter the following JSON:
+
+json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "password123"
+}
+Click Send.
+
+Note the token you receive in the response.
+
+Log In using Postman:
+
+Open a new tab in Postman.
+
+Set the method to POST.
+
+Enter the URL: http://localhost:3000/api/auth/login.
+
+Go to the Headers tab and add:
+
+Key: Content-Type
+
+Value: application/json
+
+Go to the Body tab, select raw and choose JSON from the dropdown.
+
+Enter the following JSON:
+
+json
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
+Click Send.
+
+Note the token you receive in the response.
+
+Access a Protected Route using Postman:
+
+Open a new tab in Postman.
+
+Set the method to GET.
+
+Enter the URL: http://localhost:3000/api/auth/protected.
+
+Go to the Headers tab and add:
+
+Key: Content-Type
+
+Value: application/json
+
+Key: x-auth-token
+
+Value: your_jwt_token_here (Replace your_jwt_token_here with the token received from the login response)
+
+Click Send.
+
+If the token is valid, you should receive a response with the message: This is a protected route.
